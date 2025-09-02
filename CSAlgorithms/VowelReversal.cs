@@ -38,6 +38,39 @@ public class VowelReversal
         
         return new string(charArray);
     }
+    
+    public string FasterReverseVowelsViaTwoPointers(string s)
+    {
+        char[] charArray = s.ToCharArray();
+        
+        int left = 0;
+        int right = charArray.Length - 1;
+        
+        while (left < right)
+        {
+            while (left < right && !IsVowel(charArray[left]))
+            {
+                left++;
+            }
+            
+            while (left < right && !IsVowel(charArray[right]))
+            {
+                right--;
+            }
+            
+            if (left < right)
+            {
+                char temp = charArray[left];
+                charArray[left] = charArray[right];
+                charArray[right] = temp;
+                
+                left++;
+                right--;
+            }
+        }
+        
+        return new string(charArray);
+    }
 
     public bool IsVowel(char c)
     {
