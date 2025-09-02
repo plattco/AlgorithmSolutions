@@ -27,8 +27,7 @@ public class Candies {
     
     static void Main(string[] args)
     {
-        var candies = KidsWithCandies();
-
+        //var candies = KidsWithCandies();
     }
 }
 

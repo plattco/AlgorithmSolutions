@@ -1,35 +1,31 @@
 namespace DefaultNamespace;
 
-public class CanPlaceFlowers
+public class FlowerAlgo
 {
-    public bool CanPlaceFlowers(int[] flowerbed, int n)
+    public static bool CanPlaceFlowers(int[] flowerbed, int n)
     {
-        int i = 0;
-        int plantCount = 0;
-        foreach (var plot in flowerbed)
+        var plantCount = 0;
+        for (int i = 0; i < flowerbed.Length; i++)
         {
-            if (plot == 0)
+            if (flowerbed[i] == 0)
             {
-                if((flowerbed[i-1] == 0 || i == 0) && (flowerbed[i+1] == 0 || i == (flowerbed.Length - 1)))
+                var leftEmpty = (i == 0 || flowerbed[i - 1] == 0);
+                var rightEmpty = (i == flowerbed.Length - 1 || flowerbed[i + 1] == 0);
+            
+                if (leftEmpty && rightEmpty)
                 {
                     flowerbed[i] = 1;
                     plantCount++;
                 }
             }
-
-            i++;
         }
-
-        if (plantCount == n)
-        {
-            return true;
-        }
-
-        return false;
+        return plantCount >= n;
     }
     
     public static void Main(string[] args)
     {
-        console.print(CanPlaceFlowers([1,0,0,0,1], 1));
+        var flowerbed = new int[] {1, 0, 0, 0, 1};
+        var result = CanPlaceFlowers(flowerbed, 1);
+        Console.WriteLine();
     }
 }
