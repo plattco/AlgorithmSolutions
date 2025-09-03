@@ -9,6 +9,7 @@ public class WordsReversal
             // store a temp "word"
             // start adding chars to temp word
             // when we reach a space, reverse the word and add it to the reversed string above
+            // make sure spaces are clean
             // clear out temp word
             // rinse and repeat
         // return words
